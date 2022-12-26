@@ -1,11 +1,11 @@
-# VaryCharm
+# VaryNote
 
 
-If you find VaryCharm useful for your work please cite:
+If you find VaryNote useful for your work please cite:
 ```
-@article{varycahrm2022
+@article{varynote2022
   author    = {Anonymous1, Anonymous2, and Anonymous3},
-  title     = {VaryCHarm: A Method to Automatically Vary the Complexity of Harmonies in Music},
+  title     = {VaryNote: A Method to Automatically Vary the Number of Notes in Symbolic Music},
   journal   = {???},
   year      = {2022},
 }
