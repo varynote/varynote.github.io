@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="VaryNote: A method to add or remove notes in MIDI music.">
+  <meta name="keywords" content="Vision-Language Grounding, Manipulation, CLIP">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VaryNote</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Y34PZ3XBE"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-4Y34PZ3XBE');
+  </script>
+
+  <script>
+    function updateSingleVideo() {
+      var demo = document.getElementById("single-menu-demos").value;
+      var task = document.getElementById("single-menu-tasks").value;
+      var inst = document.getElementById("single-menu-instances").value;
+
+      console.log("single", demo, task, inst)
+
+      var video = document.getElementById("single-task-result-video");
+      video.src = "https://homes.cs.washington.edu/~mshr/cliport/results_web/" + 
+                  task + 
+                  "-two_stream_full_clip_lingunet_lat_transporter-n" + 
+                  demo + 
+                  "-train/videos/" + 
+                  task +
+                  "-0000" + 
+                  inst + 
+                  ".mp4";
+      video.playbackRate = 2.0;
+      video.play();
+    }
+
+    function updateMultiVideo() {
+      var demo = document.getElementById("multi-menu-demos").value;
+      var task = document.getElementById("multi-menu-tasks").value;
+      var inst = document.getElementById("multi-menu-instances").value;
+
+      console.log("multi", demo, task, inst)
+
+      var video = document.getElementById("multi-task-result-video");
+      video.src = "https://homes.cs.washington.edu/~mshr/cliport/results_web/" + 
+                  task + 
+                  "-two_stream_full_clip_lingunet_lat_transporter-n" + 
+                  demo + 
+                  "-train/videos/multi-language-conditioned-" + 
+                  task +
+                  "-0000" + 
+                  inst + 
+                  ".mp4";
+      video.playbackRate = 2.0;
+      video.play();
+    }
+
+  </script>
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" target="_blank" href="https://google.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+       <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" target="_blank" href="http://google.com">
+            NULL
+          </a>
+          <a class="navbar-item" target="_blank" href="http://google.com">
+            NULL
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">VaryNote: A Method to Automatically Vary the Number of Notes in Symbolic Music</h1>
+          <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.robot-learning.org/">AIMC 2022 Draft</a></h3>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a target="_blank" href="https://google.com">Annonymous 1</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a target="_blank" href="http://google.com">Annonymous 1</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a target="_blank" href="https://google.com">Annonymous 1</a><sup>1, 2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Annonymous</span>
+            <span class="author-block"><sup>1</sup>University of Annonymous2</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a target="_blank" href="https://arxiv.org"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+<!--               <span class="link-block">
+                <a target="_blank" href="https://drive.google.com/file/d/1xzG5e1XF958HPuD_FZTiKROd9AQyd1fS/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a target="_blank" href="https://youtu.be"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a target="_blank" href="https://github.com/VaryNote/VaryNote.github.io/tree/main/VaryNoteCode"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-fullhd">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop height="100%">
+        <source src="https://cliport.github.io/media/videos/10sim_web_teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <h2 class="subtitle has-text-centered">
+      </br>
+        <span class="dcliport">VaryNote</span> is a method to automatically vary the numbers of notes in MIDI music. 
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop height="100%">
+            <source src="media/videos/0.5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop height="100%">
+            <source src="media/videos/0.7.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop height="100%">
+            <source src="media/videos/Original.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop height="100%">
+            <source src="media/videos/1.5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop height="100%">
+            <source src="media/videos/1.9.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- <p>
+            How can we imbue robots with the ability to manipulate objects precisely but also to
+            reason about them in terms of abstract concepts? 
+          </p> -->
+          <p>
+Automatically varying the number of notes in symbolic music has various applications in assisting music creators to embellish simple tunes or to reduce complex music to its core idea. In this paper, we formulate the problem of varying music complexity, and propose a method that can preserve harmonic structure while varying the number of notes. Our method, VaryNote, adopts an autoencoder architecture in combination with a masking mechanism to control the number of notes of the generated music. To train the weights of the pitch autoencoder we present a novel surrogate divergence, combining the loss of pitch reconstructions with chord predictions end-to-end. We evaluate our results by plotting chord recognition accuracy with increasing and decreasing number of notes, analysing absolute and relative musical features with a probabilistic framework, and by conducting human surveys. The human survey results indicate humans prefer VaryNote output (with 1.5, 1.9 X notes) over the original music; suggesting that it can be a useful tool in music generation applications.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+
+    <!-- Paper video. -->
+    </br>
+    </br>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <!-- <h2 class="title is-3">Architecture</h2> -->
+          <img src="media/images/intro.png" class="interpolation-image" 
+          alt="Interpolate start reference image." />
+    
+      </div>
+    </div>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+
+
+    <!-- Animation. -->
+    <div class="rows is-centered ">
+      <div class="row is-full-width">
+        <h2 class="title is-3"><span class="dcliport">VaryNote</span></h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Architecture</h3>
+        <div class="content has-text-justified">
+          <p>
+            The problem is to conditionally generate music based on <b>r</b>. A straightforward approach is to first apply
+            representation learning on the music and then reconstruct it conditioned on <b>r</b>, similar to autoencoder style models in machine learning. In this section, we introduce a novel
+            autoencoder, named VaryNote. Specifically, VaryNote consists of two parts. The first is a pitch autoencoder where the encoder compresses a piece of music into a latent representation and the decoder
+            reconstructs music from the latent representation. The second is a threshold mask that controls the sparsity in the output music. To train the weights of the pitch autoencoder we define a novel divergence in. This divergence is a combination of error on reconstruction and error on symbolic chord predictions.
+          </p>
+        </div>
+        <center> 
+          <img srcset="media/images/model.png" width="75%"
+          alt="Interpolate start reference image." /> 
+        </center>
+               <br/>
+        <br/>
+            <b>Figure 1:</b> During training VaryNote combines MSE loss and softmax cross entropy loss. Note the mask requires an output-input ratio <b>r</b>. During training we can fix <b>r</b>; or train without masking, and apply the mask during inference. During inference, <b>r</b> controls the number of notes.
+        <br/>
+        <br/>
+        <br/>
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <!-- <h3 class="title is-4">TransporterNets</h3>
+        <div class="content has-text-justified">
+          <p>
+            We use this two-stream architecture in all three networks of <a target=”_blank” href="https://transporternets.github.io/">TransporterNets</a> 
+            to predict pick and place affordances at each timestep. TransporterNets first attends to a local region to decide where to pick, 
+            then computes a placement location by finding the best match for the picked region through 
+            cross-correlation of deep visual features. This structure serves as a powerful inductive bias for learning <a target="_blank" href="https://fabianfuchsml.github.io/equivariance1of2/">roto-translationally equivariant</a> representations in tabletop environments.
+
+          </p>
+        </div> -->
+        <!-- <div class="content has-text-centered">
+          <video id="transporter-gif"
+                 controls
+                 muted
+                 autoplay
+                 loop
+                 width="40%">
+            <source src="https://transporternets.github.io/images/animation.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+          Credit: <a href="https://transporternets.github.io/">Zeng et. al (Google)</a>
+          </p>
+        </div>
+        <br/>
+            <b>Paradigm 2:</b> TransporterNets takes an <a target="_blank" href="https://en.wikipedia.org/wiki/Ecological_psychology">action-centric approach</a> to perception where the objective is to <i>detect actions</i> rather than <i>detect objects</i> and then learn a policy. Keeping the action-space grounded in the perceptual input allows us to exploit geometric symmetries for efficient representation learning. 
+            When combined with CLIP's pre-trained representations, this enables the learning of reusable manipulation skills without any "objectness" assumptions.
+        <br/>
+        <br/>
+        <br/> -->
+
+        <!--/ Re-rendering. -->
+        <h2 class="title is-3">Human Evaluation Results</h2>
+       
+To verify the practical value of VaryNote Lifetime, we conduct a human survey to judge preference. The human survey results in Figure 2 indicate humans prefer VaryNote output, with 1.5, 1.9 times the number of notes, over the original music; and Figure 2 indicates humans perceive increased complexity with higher note multiples, except that 1.5 times the number of notes seems to be perceived with higher complexity than 1.9 times the number of notes. 
+        
+<style>.container2 {
+  width: 80%;
+  margin: 15px auto;
+}</style> 
+<!-- partial:index.partial.html -->
+<div class="container2">
+<h2>Human Evaluation Results - Comparison between Original Music and VaryNote Output</h2>
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js'></script><script  src="./script.js"></script>
+<br/>
+<b>Figure 2:</b> Human survey results for preference and complexity. Participants are asked to rate the VaryNote output based on preference on a scale of 1-5, 1 being the lowest appeal, and 5 being the highest appeal. Participants also rate complexity from 1-5, 1 being the lowest complexity, and 5 being the highest complexity. There were 30 total participants; 11/30 participants self-reported knowing how to play an instrument. 
+<br/>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-fullhd">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop height="100%">
+        <source src="https://cliport.github.io/media/videos/10sim_web_teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <h2 class="subtitle has-text-centered">
+      </br>
+        To download more listening examples click <a href="https://github.com/VaryNote/VaryNote.github.io/raw/main/VaryNoteCode/ALLresults.zip">here</a>.
+ 
+      </h2>
+    </div>
+  </div>
+</section>
+      
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{varynote2023
+  author    = {Anonymous1, Anonymous2, and Anonymous3},
+  title     = {VaryNote: A Method to Automatically Vary the Number of Notes in Symbolic Music},
+  journal   = {???},
+  year      = {2022},
+}</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
